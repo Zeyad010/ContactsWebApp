@@ -50,5 +50,20 @@ namespace ContactsWebApp.Controllers
 
         }
 
+        [HttpDelete]
+        [Route("{id:guid}")]
+        public IActionResult DeleteContact(Guid id)
+        {
+         var contact=    _dbContext.TbContacts.Find(id);
+            if (contact != null) {
+            
+             _dbContext.TbContacts.Remove(contact);
+                _dbContext.SaveChanges();
+            
+            }
+             
+            return Ok();
+        }
+
     }
 }
