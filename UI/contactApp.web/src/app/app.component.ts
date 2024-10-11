@@ -50,6 +50,19 @@ favorite: new FormControl<boolean>(false)
 
   }
 
+  onDelete(id:string){
+    // you should send id in the url 
+    this.http.delete(`https://localhost:7169/api/Contacts/${id}`).subscribe({
+
+next:(value)=> {
+  alert('Item Deleted')
+  this.contacts$ = this.contacts$=this.getContacts(); 
+
+}
+
+    })
+  }
+
   // This method will call the API using Http client
   private getContacts():Observable<Contact[]>{
 
