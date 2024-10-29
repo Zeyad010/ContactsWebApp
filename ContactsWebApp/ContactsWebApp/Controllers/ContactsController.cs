@@ -50,6 +50,32 @@ namespace ContactsWebApp.Controllers
 
         }
 
+        [HttpPut]
+        [Route("{id:guid}")]
+        public IActionResult EditContact(Guid id, AddContactRequestDTO request)
+        {
+            var contact = _dbContext.TbContacts.Find(id);
+            if (contact != null)
+            {
+             contact.Name = request.Name;
+                contact.Email = request.Email;
+                contact.PhoneNumber = request.PhoneNumber;
+                contact.Favorite = request.Favorite;
+
+
+
+                _dbContext.TbContacts.Update(contact);
+                _dbContext.SaveChanges();
+            
+            }
+
+            return Ok(); 
+
+
+
+            }
+
+
         [HttpDelete]
         [Route("{id:guid}")]
         public IActionResult DeleteContact(Guid id)

@@ -63,6 +63,8 @@ next:(value)=> {
     })
   }
 
+  
+
   // This method will call the API using Http client
   private getContacts():Observable<Contact[]>{
 
